@@ -3,6 +3,7 @@
     include "./database/MySQLiConnection.php";
     include "./model/produto.php";
 
+
     if (!empty($_REQUEST['action'])){
       ?>
           <input type="hidden" value="<?php echo $_REQUEST['id']?>" id="requestaction">
@@ -33,18 +34,20 @@
 ?>
   <div class="constraint">
     <div class="row">
-    <form class="col s6">
+    <form class="col s6" action="persistance.php" type="post">
       <div class="row">
         <div class="input-field col s6">
-          <input id="nome" type="text" class="validate"value="<?php echo$produto['nome'] ?>" required>
+            <input type="hidden" id="action" name="action" value="2">
+            <input type="hidden" id="id" name="id" value="<?= $produto['idproduto']?>">
+          <input id="nome" name="nome" type="text" class="validate"value="<?php echo $produto['nome'] ?>" required>
           <label for="nome">nome</label>
         </div>
         <div class="input-field col s6">
-          <input id="fornecedor" type="text" class="validate"  value="<?php echo$produto['fornecedor'] ?>"required>
+          <input id="fornecedor" name="fornecedor" type="text" class="validate"  value="<?php echo$produto['fornecedor'] ?>"required>
           <label for="fornecedor">Fornercedor</label>
         </div>
       </div>
-      <button id="register-submit" class="btn waves-effect waves-light" type="button">alterar</button>
+      <button id="register-submit" class="btn waves-effect waves-light" type="submit">alterar</button>
     </form>
   </div>
 

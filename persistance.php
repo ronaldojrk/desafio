@@ -7,6 +7,7 @@
     require_once './database/MySQLiConnection.php';
 
 
+
     $con = new MySQLiConnection();
 
     $produto = new produto();
@@ -29,12 +30,11 @@
             }
             break;
         case 2:
-           /* if($usuario->up($con, $usuario->getNome(), $usuario->getEmail(),$usuario->getSenha(),$usuario->getDocumento(),$usuario->getTelefone(),$usuario->getId())){
+           if($produto->up($con,$produto->getId(),$produto->getNome(),$produto->getFonecedor())){
                 $sucesso =true;
-
             }else{
                 $sucesso =false;
-            }*/
+            }
 
             break;
         case 3:
@@ -59,4 +59,7 @@
     }
 
     $con->close();
-    echo json_encode($data);
+//    echo json_encode($data);
+?>
+
+<<a href="lista.php">Voltar</a>

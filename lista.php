@@ -41,30 +41,8 @@ $objProduto =$produto->listaProduto($con);
         </tr>
   <?php
     }
-    ?>    
-
-
-
-
-
+    ?>
       </table>
-
-
-
-
-
-
-
-
-      </div> 
-
-
-  </div>
-
-
-
-
-
-
-
+      </div>
+    </div>
     </body>

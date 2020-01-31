@@ -22,7 +22,7 @@ class produto
   }
   public function getNome(){
     return $this ->nome;
-  
+
   }
   public function setNome($nome){
     $this->nome=$nome;
@@ -56,10 +56,10 @@ class produto
 
     $query = "SELECT * FROM produto";
     $obj =$con->query($query);
-  
-  
+
+
     return $obj;
-    
+
   }
   public function infoProduto($con,$id){
 
@@ -72,15 +72,29 @@ class produto
 
   }
   public function delete($con,$id){
+      $query ="DELETE FROM produto where idproduto = {$id}";
 
-  $query ="DELETE FROM produto where idproduto = {$id}";
-
-  if($con->query($query)){
-
-    return true;
-  }else{
-    return false;
+      if($con->query($query)){
+        return true;
+      }else{
+        return false;
+      }
   }
+
+  public function up($con, $id, $nome, $fornecedor){
+      try {
+          $query = "UPDATE produto SET nome='{$nome}', fornecedor='{$fornecedor}' WHERE idproduto = {$id}";
+          if($con->query($query)){
+              return true;
+          }
+          return false;
+      }catch (mysqli_sql_exception $e){
+          echo $e->getMessage();
+          return false;
+      }
+
+
+
   }
 
 }
